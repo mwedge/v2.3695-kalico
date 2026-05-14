@@ -1,0 +1,62 @@
+# Motor B (Left) - Connected to MOTOR_0
+[stepper_x]
+step_pin: PF13
+dir_pin: PF12
+enable_pin: !PF14
+rotation_distance: 40
+microsteps: 32
+full_steps_per_rotation: 200
+endstop_pin: tmc2209_stepper_x:virtual_endstop
+position_min: 0
+position_endstop: 345
+position_max: 345
+homing_speed: 60
+homing_retract_dist: 0
+homing_positive_dir: true
+use_sensorless_homing: true
+
+[tmc2209 stepper_x]
+uart_pin: PC4
+interpolate: False
+run_current: 1.2
+sense_resistor: 0.110
+stealthchop_threshold: 0
+diag_pin: ^PG6                   # Pin for sensorless homing
+home_current: 0.6
+current_change_dwell_time: 0.2
+driver_SGTHRS: 75               # Sensitivity; 255 is most sensitive, 0 is least. TUNE THIS.
+
+# Motor A (Right) - Connected to MOTOR_1
+[stepper_y]
+step_pin: PG0
+dir_pin: PG1
+enable_pin: !PF15
+rotation_distance: 40
+microsteps: 32
+full_steps_per_rotation: 200
+endstop_pin: tmc2209_stepper_y:virtual_endstop
+position_min: 0
+position_endstop: 355
+position_max: 355
+homing_speed: 60
+homing_retract_dist: 0
+homing_positive_dir: true
+use_sensorless_homing: true
+
+[tmc2209 stepper_y]
+uart_pin: PD11
+interpolate: False
+run_current: 1.2
+sense_resistor: 0.110
+stealthchop_threshold: 0
+diag_pin: ^PG9
+home_current: 0.6
+current_change_dwell_time: 0.2
+driver_SGTHRS: 77               # Sensitivity; TUNE THIS.
+
+# --- TMC Autotune Section ---
+#[autotune_tmc stepper_x]
+#motor: ldo-42sth48-2804ah
+#
+#[autotune_tmc stepper_y]
+#motor: ldo-42sth48-2804ah
