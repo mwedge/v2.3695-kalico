@@ -23,14 +23,18 @@
 ####    http://<ip>:<port>/?action=[stream/snapshot]            #####
 ####                                                            #####
 #####################################################################
+####    RTSP Stream URL: ( if enabled and supported )           #####
+####    rtsp://<ip>:<rtsp_port>/stream.h264                     #####
+#####################################################################
 
 
 [crowsnest]
+log_path: /home/pi/printer_data/logs/crowsnest.log
 log_level: verbose
-rollover_on_start: true                # Creates a backup and clears the log on every restart, if set to true
+delete_log: true       # Set to true temporarily to clear old errors
 
 [cam 1]
-mode: ustreamer# https://docs.mainsail.xyz/crowsnest/faq/backends
+mode: ustreamer
 port: 8080
 device: /dev/v4l/by-id/usb-PC-LM1E_PC-LM1E_PC-LM1E-video-index0
 resolution: 1280x720       # Drop to 480p temporarily to test if lag vanishes
@@ -38,7 +42,7 @@ max_fps: 15               # Lower FPS to 10
 #custom_flags: --format=MJPG
 
 [cam 2]
-mode: ustreamer# https://docs.mainsail.xyz/crowsnest/faq/backends
+mode: ustreamer
 port: 8081
 device: /dev/v4l/by-id/usb-Vimicro_corp._PC-LM1E_Camera_PC-LM1E_Audio-video-index0
 resolution: 1280x720
